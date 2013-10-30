@@ -6,12 +6,17 @@ var io       = require('socket.io').listen(server); 	// socket.io
 var mongoose = require('mongoose'); 					// mongoose for mongodb
 
 // configuration ===============================================================
-app.set('views', __dirname + '/views'); 				//
-app.use(express.static(__dirname + '/public')); 		// set the static files location /public/img will be /img for users
-app.use(express.logger('dev')); 						// log every request to the console
-app.use(express.cookieParser()); 						// read cookies
-app.use(express.bodyParser()); 							// pull information from html in POST
-app.use(express.methodOverride()); 						// simulate DELETE and PUT
+
+	// views
+	app.set('views', __dirname + '/views'); 				// set location for views
+	app.set('view engine', 'html');
+
+	// express modules
+	app.use(express.static(__dirname + '/public')); 		// set the static files location /public/img will be /img for users
+	app.use(express.logger('dev')); 						// log every request to the console
+	app.use(express.cookieParser()); 						// read cookies
+	app.use(express.bodyParser()); 							// pull information from html in POST
+	app.use(express.methodOverride()); 						// simulate DELETE and PUT
 
 // routes ======================================================================
 var site = require('./routes/index');

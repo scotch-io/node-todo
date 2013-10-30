@@ -17,8 +17,8 @@ app.use(express.methodOverride()); 						// simulate DELETE and PUT
 var site = require('./routes/index');
 
 	// main routes
-	app.get('/', function(request, response) {
-		response.render('index', { title: 'Route Separation Example' });
+	app.get('/', function(req, res) {
+		res.sendfile('views/index.html');
 	});
 
 	app.get('/todos', site.index); 			// show all todos

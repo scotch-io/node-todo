@@ -1,19 +1,19 @@
-exports.index = function(request, response) {
-  response.send('routing!');
+exports.index = function(req, res) {
+  res.send('routing!');
 };
 
-exports.single = function(request, response) {
-	response.send(request.params.id);
+exports.single = function(req, res) {
+	res.send(req.params.id);
 };
 
-exports.create = function(request, reponse) {
-
-};
-
-exports.store = function(request, response) {
+exports.create = function(req, reponse) {
 
 };
 
-exports.edit = function(request, response) {
+exports.store = function(req, res) {
+
+};
+
+exports.edit = function(req, res) {
 
 };

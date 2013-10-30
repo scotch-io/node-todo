@@ -1,0 +1,24 @@
+{
+  "name"       : "node-todo",
+  "version"    : "0.0.0",
+  "description": "Simple todo application.",
+  "main"       : "app.js",
+  "scripts"    : {
+    "test"     : "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type"    : "git",
+    "url"     : "git://github.com/scotch-io/node-todo"
+  },
+  "author" : "Scotch",
+  "license": "BSD-2-Clause",
+  "bugs"   : {
+    "url"  : "https://github.com/scotch-io/node-todo/issues"
+  },
+  "dependencies" : {
+    "express"    : "~3.4.4",
+    "mongoose"   : "~3.6.2",
+    "socket.io"  : "~0.9.16",
+    "node-dev"   : "~2.0.2"
+  }
+}

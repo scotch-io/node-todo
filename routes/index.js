@@ -3,7 +3,7 @@ exports.index = function(request, response) {
 };
 
 exports.single = function(request, response) {
-
+	response.send(request.params.id);
 };
 
 exports.create = function(request, reponse) {

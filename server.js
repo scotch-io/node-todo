@@ -6,16 +6,14 @@ var io       = require('socket.io').listen(server); 	// socket.io
 var mongoose = require('mongoose'); 					// mongoose for mongodb
 
 	// routes
-	var routes = require('./routes/app');
-	var api    = require('./routes/api');
+	var routes = require('./routes/app'); 				// link to routes file for frontend application (routes/app.js)
+	var api    = require('./routes/api'); 				// link to routes file for api (routes/api.js)
 
 // configuration ===============================================================
 
-// connect to mongodb database on modulus.io
-mongoose.connect('mongodb://node:node@mongo.onmodulus.net:27017/uwO3mypu');
+mongoose.connect('mongodb://node:node@mongo.onmodulus.net:27017/uwO3mypu'); 	// connect to mongodb database on modulus.io
 
 app.configure(function() {
-
 	// views
 	app.set('views', __dirname + 'app/views'); 				// set location for views
 	app.set('view engine', 'jade');
@@ -25,7 +23,6 @@ app.configure(function() {
 	app.use(express.logger('dev')); 						// log every request to the console
 	app.use(express.bodyParser()); 							// pull information from html in POST
 	app.use(express.methodOverride()); 						// simulate DELETE and PUT
-	app.use(app.router);
 });
 
 // routes ======================================================================

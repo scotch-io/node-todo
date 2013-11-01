@@ -16,7 +16,7 @@ mongoose.connect('mongodb://node:node@mongo.onmodulus.net:27017/uwO3mypu'); 	// 
 app.configure(function() {
 	// views
 	app.set('views', __dirname + 'app/views'); 				// set location for views
-	app.set('view engine', 'jade');
+	app.set('view engine', 'jade'); 						// set engine for views
 
 	// express moduless
 	app.use(express.static(__dirname + '/public')); 		// set the static files location /public/img will be /img for users

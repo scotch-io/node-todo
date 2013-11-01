@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html ng-app="todo">
 <head>
 	<!-- META -->
 	<meta charset="utf-8">
@@ -21,16 +21,20 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
 	<script src="js/core.js"></script>
 </head>
-<body>
-<div class="container">
-	<div class="row">
-		<div class="col-sm-6">
-			first
-		</div>
-		<div class="col-sm-6">
-			second
+<body ng-controller="mainController">
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				first
+			</div>
+			<div class="col-sm-6">
+				second
+			</div>
 		</div>
 	</div>
-</div>
+
+	{{ hello }}
+
 </body>
 </html>

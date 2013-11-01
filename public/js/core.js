@@ -26,3 +26,7 @@ var todo = angular.module('todo', [])
 			}
 		}
 	});
+
+function mainController($scope, $http, $location, Todo) {
+	$scope.hello = 'fuck';
+}

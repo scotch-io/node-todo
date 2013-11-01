@@ -22,8 +22,8 @@
 	<script src="js/core.js"></script>
 </head>
 <body ng-controller="mainController">
-
 	<div class="container">
+
 		<div class="row">
 			<div class="col-sm-6">
 				first
@@ -32,9 +32,12 @@
 				second
 			</div>
 		</div>
+
+		<!-- ANGULAR CONTENT INJECTED HERE -->
+		<div class="row">
+			<div ng-view></div>
+		</div>
+
 	</div>
-
-	{{ hello }}
-
 </body>
 </html>

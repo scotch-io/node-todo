@@ -11,17 +11,22 @@ var mongoose = require('mongoose'); 					// mongoose for mongodb
 
 // configuration ===============================================================
 
+// connect to mongodb database on modulus.io
 mongoose.connect('mongodb://node:node@mongo.onmodulus.net:27017/uwO3mypu');
 
-// views
-app.set('views', __dirname + 'app/views'); 				// set location for views
-app.set('view engine', 'jade');
+app.configure(function() {
 
-// express modules
-app.use(express.static(__dirname + '/public')); 		// set the static files location /public/img will be /img for users
-app.use(express.logger('dev')); 						// log every request to the console
-app.use(express.bodyParser()); 							// pull information from html in POST
-app.use(express.methodOverride()); 						// simulate DELETE and PUT
+	// views
+	app.set('views', __dirname + 'app/views'); 				// set location for views
+	app.set('view engine', 'jade');
+
+	// express modules
+	app.use(express.static(__dirname + '/public')); 		// set the static files location /public/img will be /img for users
+	app.use(express.logger('dev')); 						// log every request to the console
+	app.use(express.bodyParser()); 							// pull information from html in POST
+	app.use(express.methodOverride()); 						// simulate DELETE and PUT
+	app.use(app.router);
+});
 
 // routes ======================================================================
 

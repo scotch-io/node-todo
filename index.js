@@ -19,18 +19,11 @@ var mongoose = require('mongoose'); 					// mongoose for mongodb
 	app.use(express.methodOverride()); 						// simulate DELETE and PUT
 
 // routes ======================================================================
-var site = require('./routes/index');
 
-	// main routes
-	app.get('/', function(req, res) {
-		res.sendfile('views/index.html');
+	// main route
+	app.get('*', function(req, res) {
+		res.sendfile('./views/index.html');
 	});
-
-	app.get('/todos', site.index); 			// show all todos
-	app.get('/todos/:id', site.single); 	// show single todo
-	app.get('/todos/create', site.create); 	// show form for creation
-	app.post('/todos/store', site.store); 	// store a todo
-	app.get('/todos/edit', site.edit); 		// show form to edit
 
 // listen ======================================================================
 server.listen(8080);

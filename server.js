@@ -1,6 +1,6 @@
 // set up ======================================================================
 var express  = require('express');
-var app      = express();
+var app      = module.exports = express();
 var server   = require('http').createServer(app); 		// setup http server
 var io       = require('socket.io').listen(server); 	// socket.io
 var mongoose = require('mongoose'); 					// mongoose for mongodb
@@ -20,7 +20,7 @@ app.configure(function() {
 	app.set('views', __dirname + 'app/views'); 				// set location for views
 	app.set('view engine', 'jade');
 
-	// express modules
+	// express moduless
 	app.use(express.static(__dirname + '/public')); 		// set the static files location /public/img will be /img for users
 	app.use(express.logger('dev')); 						// log every request to the console
 	app.use(express.bodyParser()); 							// pull information from html in POST
@@ -29,6 +29,9 @@ app.configure(function() {
 });
 
 // routes ======================================================================
+
+	// home page
+	app.get('/', routes.index);
 
 	// api
 	app.get('/api/todos', api.index); 					// get all todos
@@ -41,7 +44,5 @@ app.configure(function() {
 	app.get('*', routes.index);
 
 // listen ======================================================================
-server.listen(8080, function()
-{
-	console.log("App listening on port 8080");
-});
+server.listen(8080);
+console.log("App listening on port 8080");

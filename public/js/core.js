@@ -2,7 +2,7 @@ var todo = angular.module('todo', [])
 	.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 		$routeProvider
 			.when('/', {
-				templateUrl 	: 'header.html',
+				templateUrl 	: 'pages/home.html',
 				controller 		: 'todos'
 			})
 			.when('/', {

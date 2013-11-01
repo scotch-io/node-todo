@@ -14,11 +14,6 @@ var mongoose = require('mongoose'); 					// mongoose for mongodb
 mongoose.connect('mongodb://node:node@mongo.onmodulus.net:27017/uwO3mypu'); 	// connect to mongodb database on modulus.io
 
 app.configure(function() {
-	// views
-	app.set('views', __dirname + 'app/views'); 				// set location for views
-	app.set('view engine', 'jade'); 						// set engine for views
-
-	// express moduless
 	app.use(express.static(__dirname + '/public')); 		// set the static files location /public/img will be /img for users
 	app.use(express.logger('dev')); 						// log every request to the console
 	app.use(express.bodyParser()); 							// pull information from html in POST

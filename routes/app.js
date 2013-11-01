@@ -1,3 +1,3 @@
 exports.index = function(req, res) {
-	res.send('fuck');
+	res.sendfile('./app/views/index.html');
 };

@@ -1,13 +1,9 @@
 // set up ======================================================================
 var express  = require('express');
-var app      = module.exports = express();
+var app      = express(); 								// create our app w/ express
 var server   = require('http').createServer(app); 		// setup http server
 var io       = require('socket.io').listen(server); 	// socket.io
 var mongoose = require('mongoose'); 					// mongoose for mongodb
-
-	// routes
-	var routes = require('./routes/app'); 				// link to routes file for frontend application (routes/app.js)
-	var api    = require('./routes/api'); 				// link to routes file for api (routes/api.js)
 
 // configuration ===============================================================
 
@@ -22,18 +18,36 @@ app.configure(function() {
 
 // routes ======================================================================
 
-	// home page
-	app.get('/', routes.index);
+	// api ---------------------------------------------------------------------
+	// get all todos
+	app.get('/api/todos', function(req, res) {
+		res.send('all todos (via api)');
+	});
 
-	// api
-	app.get('/api/todos', api.index); 					// get all todos
-	app.get('/api/todos/:todo_id', api.show); 			// get single todo
-	app.post('/api/todos', api.create); 				// create todo
-	app.put('/api/todos/:todo_id', api.edit); 			// edit todo
-	app.delete('/api/todos/:todo_id', api.delete);    	// delete
+	// get single todo
+	app.get('/api/todos/:todo_id', function(req, res) {
+		res.send('get single todo #' + req.params.todo_id + ' (via api)');
+	});
 
-	// application
-	app.get('*', routes.index);
+	// create todo
+	app.post('/api/todos', function(req, res) {
+		res.send('creating todo (via api)');
+	});
+
+	// edit a todo
+	app.put('/api/todos/:todo_id', function(req, res) {
+		res.send('edit todo #' + req.params.todo_id + '(via api)');
+	});
+
+	// delete a todo
+	app.delete('/api/todos/:todo_id', function(req, res) {
+		res.send('delete todo #' + req.params.todo_id + ' (via api)');
+	});
+
+	// application -------------------------------------------------------------
+	app.get('*', function(req, res) {
+		res.sendfile('./app/views/index.html');
+	});
 
 // listen ======================================================================
 server.listen(8080);

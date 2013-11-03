@@ -26,7 +26,9 @@ var Todo = mongoose.model('Todo', {
 	// api ---------------------------------------------------------------------
 	// get all todos
 	app.get('/api/todos', function(req, res) {
-		res.send('all todos (via api)');
+		Todo.find(function(err, todos){
+			res.json(todos);
+		});
 	});
 
 	// create todo

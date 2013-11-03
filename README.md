@@ -5,7 +5,7 @@ A Node app built with MongoDB and Angular. For demonstration purposes and a tuto
 
 Requirements
 ------------
-- (Node and npm)[http://nodejs.org]
+- [Node and npm](http://nodejs.org)
 
 Installation
 -----------

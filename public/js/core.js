@@ -8,7 +8,6 @@ function mainController($scope, $http) {
 		$http.get('/api/todos')
 			.success(function(data) {
 				$scope.todos = data;
-				console.log(data);
 			})
 			.error(function(data) {
 				console.log('Error: ' + data);
@@ -32,7 +31,6 @@ function mainController($scope, $http) {
 		$http.delete('/api/todos/' + id)
 			.success(function(data) {
 				$scope.todos = data;
-				console.log(data);
 			})
 			.error(function(data) {
 				console.log('Error: ' + data);

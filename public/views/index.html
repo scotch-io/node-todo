@@ -41,7 +41,7 @@
 
 				<div class="checkbox" ng-repeat="todo in todos">
 					<label>
-						<input type="checkbox"> {{ todo.text }}
+						<input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
 					</label>
 				</div>
 

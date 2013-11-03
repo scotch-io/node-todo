@@ -26,14 +26,31 @@ var Todo = mongoose.model('Todo', {
 	// api ---------------------------------------------------------------------
 	// get all todos
 	app.get('/api/todos', function(req, res) {
-		Todo.find(function(err, todos){
-			res.json(todos);
+
+		// use mongoose to get all todos in the database
+		Todo.find(function(err, todos) {
+
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+			if (err)
+				res.send(err)
+
+			res.json(todos); // return all todos in JSON format
 		});
 	});
 
 	// create todo
 	app.post('/api/todos', function(req, res) {
-		res.send('creating todo (via api)');
+
+		// create a todo, information comes from AJAX request from Angular
+		Todo.create({
+			text : req.body.text,
+			done : false
+		}, function(err, todo) {
+			if (err)
+				res.send(err);
+		});
+
+
 	});
 
 	// delete a todo

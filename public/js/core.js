@@ -1,16 +1,34 @@
-var todo = angular.module('todo', [])
-	.config(function($routeProvider, $locationProvider) {
-		$routeProvider
-			.when('/', {
-				templateUrl 	: '../../app/views/pages/home.html',
-				controller 		: 'todos'
+var scotchTodo = angular.module('scotchTodo', []);
+
+function mainController($scope, $http) {
+	$scope.formData = {};
+
+	$scope.initialize = function() {
+		$http.get('/api/todos')
+			.success(function(data) {
+				$scope.todos = data;
+			})
+			.error(function(data) {
+				console.log('Error: ' + data);
 			});
-	});
+	};
 
-function mainController($scope, $http, $location) {
-	$scope.hello = 'fuck';
-}
+	$scope.createTodo = function() {
+		$http.post('/api/todos', $scope.formData)
+			.success(function(data) {
+				console.log(data);
+			})
+			.error(function(data) {
+				console.log('Error: ' + data);
+			});
+	};
 
-function todos($scope, $http, $location) {
+	$scope.changeTodo = function() {
+
+	};
+
+	$scope.deleteTodo = function() {
+
+	};
 
 }

@@ -1,4 +1,6 @@
 <!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
 <html ng-app="scotchTodo">
 <head>
 	<!-- META -->
@@ -21,16 +23,20 @@
 	<script src="core.js"></script>
 
 </head>
+<!-- SET THE CONTROLLER AND GET ALL TODOS WITH INITIALIZE FUNCTION -->
 <body ng-controller="mainController" ng-init="initialize()">
-
 	<div class="container">
+
+		<!-- HEADER AND TODO COUNT -->
 		<div class="jumbotron text-center">
 			<h1>I'm a Todo-aholic <span class="label label-info">{{ todos.length }}</span></h1>
 		</div>
 
+		<!-- TODO LIST -->
 		<div id="todo-list" class="row">
 			<div class="col-sm-4 col-sm-offset-4">
 
+				<!-- LOOP OVER THE TODOS IN $scope.todos -->
 				<div class="checkbox" ng-repeat="todo in todos">
 					<label>
 						<input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
@@ -40,12 +46,17 @@
 			</div>
 		</div>
 
+		<!-- FORM TO CREATE TODOS -->
 		<div id="todo-form" class="row">
 			<div class="col-sm-8 col-sm-offset-2 text-center">
 				<form>
 					<div class="form-group">
+
+						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
 						<input type="text" class="form-control input-lg text-center" placeholder="I want to buy a puppy that will love me forever" ng-model="formData.text">
 					</div>
+
+					<!-- createToDo() WILL CREATE NEW TODOS -->
 					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
 				</form>
 			</div>

@@ -1,7 +1,6 @@
 // set up ======================================================================
 var express  = require('express');
 var app      = express(); 								// create our app w/ express
-var server   = require('http').createServer(app); 		// setup http server
 var mongoose = require('mongoose'); 					// mongoose for mongodb
 
 // configuration ===============================================================
@@ -82,5 +81,5 @@ var Todo = mongoose.model('Todo', {
 	});
 
 // listen (start app with node server.js) ======================================
-server.listen(8080);
+app.listen(8080);
 console.log("App listening on port 8080");

@@ -83,5 +83,5 @@ var Todo = mongoose.model('Todo', {
 	});
 
 // listen (start app with node server.js) ======================================
-server.listen(port);
+app.listen(port);
 console.log("App listening on port " + port);

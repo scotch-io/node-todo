@@ -3,6 +3,8 @@ var express  = require('express');
 var app      = express(); 								// create our app w/ express
 var mongoose = require('mongoose'); 					// mongoose for mongodb
 
+var port = process.env.PORT || 8080;
+
 // configuration ===============================================================
 
 mongoose.connect('mongodb://node:node@mongo.onmodulus.net:27017/uwO3mypu'); 	// connect to mongoDB database on modulus.io
@@ -81,5 +83,5 @@ var Todo = mongoose.model('Todo', {
 	});
 
 // listen (start app with node server.js) ======================================
-app.listen(8080);
-console.log("App listening on port 8080");
+server.listen(port);
+console.log("App listening on port " + port);

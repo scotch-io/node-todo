@@ -18,4 +18,4 @@ Installation
 
 Happy Todo-ing!
 
-![Todo-aholic](https://2ytjha.dm2301.livefilestore.com/y2pHEl5n2ntyHE_DP8mokyYLKqjNkA6U9tGV2ugIe-i0WzmKlrMEL8jYkIwPMoSLzUOLSc_SoQKr7ZVNMQWCjX2xF3i2dnHSUIz3uZrt2emW3k/todoaholic.png?psid=1)
+![Todo-aholic](http://i.imgur.com/ikyqgrn.png)

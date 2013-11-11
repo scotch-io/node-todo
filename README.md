@@ -15,10 +15,6 @@ Node provides the RESTful API. Angular provides the frontend and accesses the AP
 3. Start the server: `node server.js`
 4. View in browser at `http://localhost:8080`
 
-Happy Todo-ing!
-
-![Todo-aholic](http://i.imgur.com/ikyqgrn.png)
-
 ## Tutorial Series
 
 This repo corresponds to the Node Todo Tutorial Series on [scotch.io](http://scotch.io)
@@ -29,3 +25,7 @@ Each branch represents a certain tutorial.
 - tut3-auth: Coming Soon
 - tut4-sockets: Coming Soon
 - tut5-redis: Coming Soon
+
+Happy Todo-ing!
+
+![Todo-aholic](http://i.imgur.com/ikyqgrn.png)

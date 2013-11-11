@@ -25,6 +25,7 @@ Each branch represents a certain tutorial.
 - tut3-auth: Coming Soon
 - tut4-sockets: Coming Soon
 - tut5-redis: Coming Soon
+- tut6-organization: Coming Soon
 
 Happy Todo-ing!
 

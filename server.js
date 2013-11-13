@@ -5,9 +5,11 @@ var mongoose = require('mongoose'); 					// mongoose for mongodb
 
 var port = process.env.PORT || 8080;
 
-// configuration ===============================================================
+// load the database config
+var database = require('./config/database');
 
-mongoose.connect('mongodb://node:node@mongo.onmodulus.net:27017/uwO3mypu'); 	// connect to mongoDB database on modulus.io
+// configuration ===============================================================
+mongoose.connect(database.url); 	// connect to mongoDB database on modulus.io
 
 app.configure(function() {
 	app.use(express.static(__dirname + '/public')); 		// set the static files location /public/img will be /img for users

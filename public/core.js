@@ -1,10 +1,24 @@
 var scotchTodo = angular.module('scotchTodo', []);
 
-function mainController($scope, $http) {
+scotchTodo.factory('todoFactory', function($http) {
+	return {
+		get : function() {
+			return $http.get('/api/todos');
+		},
+		create : function() {
+			$http.post('/api/todos', $scope.formData);
+		},
+		delete : function() {
+
+		}
+	}
+});
+
+function mainController($scope, $http, todoFactory) {
 	$scope.formData = {};
 
 	// when landing on the page, get all todos and show them
-	$http.get('/api/todos')
+	todoFactory.get()
 		.success(function(data) {
 			$scope.todos = data;
 		})
@@ -14,7 +28,7 @@ function mainController($scope, $http) {
 
 	// when submitting the add form, send the text to the node API
 	$scope.createTodo = function() {
-		$http.post('/api/todos', $scope.formData)
+		
 			.success(function(data) {
 				$('input').val('');
 				$scope.todos = data;

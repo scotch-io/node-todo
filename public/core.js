@@ -16,7 +16,7 @@ function mainController($scope, $http) {
 	$scope.createTodo = function() {
 		$http.post('/api/todos', $scope.formData)
 			.success(function(data) {
-				$('input').val('');
+				$scope.formData = {}; // clear the form
 				$scope.todos = data;
 			})
 			.error(function(data) {

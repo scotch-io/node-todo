@@ -1,7 +1,10 @@
 {
   "name"         : "node-todo",
   "version"      : "0.0.0",
-  "repository"   : "https://github.com/jesperfj/node-todo.git",
+  "repository": {
+    "type"         : "git",
+    "url"          : "https://github.com/jesperfj/node-todo.git"
+  },
   "description"  : "Simple todo application.",
   "main"         : "server.js",
   "author"       : "Scotch",

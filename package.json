@@ -1,6 +1,10 @@
 {
   "name"         : "node-todo",
   "version"      : "0.0.0",
+  "repository": {
+    "type"         : "git",
+    "url"          : "https://github.com/jesperfj/node-todo.git"
+  },
   "description"  : "Simple todo application.",
   "main"         : "server.js",
   "author"       : "Scotch",
@@ -10,5 +14,8 @@
     "morgan"          : "~1.1.1",
     "body-parser"     : "~1.4.3",
     "method-override" : "~2.1.1"
+  },
+  "engines": {
+    "node": "0.10.x"
   }
 }

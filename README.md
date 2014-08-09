@@ -15,6 +15,10 @@ Node provides the RESTful API. Angular provides the frontend and accesses the AP
 3. Start the server: `node server.js`
 4. View in browser at `http://localhost:8080`
 
+## Deploy to Heroku
+
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 ## Tutorial Series
 
 This repo corresponds to the Node Todo Tutorial Series on [scotch.io](http://scotch.io)

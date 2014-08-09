@@ -4,6 +4,8 @@ A Node app built with MongoDB and Angular. For demonstration purposes and a tuto
 
 Node provides the RESTful API. Angular provides the frontend and accesses the API. MongoDB stores like a hoarder.
 
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 ## Requirements
 
 - [Node and npm](http://nodejs.org)

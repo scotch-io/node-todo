@@ -1,0 +1,13 @@
+{
+  "name": "Node Todo",
+  "description": "A small todo list app written using Node.js, Angular and MongoDB",
+  "keywords": [
+    "todo",
+    "node",
+    "angular",
+    "mongodb"
+  ],
+  "addons": [
+    "mongohq"
+  ]
+}

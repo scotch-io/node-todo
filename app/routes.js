@@ -1,13 +1,7 @@
 var Todo = require('./models/todo');
 
-module.exports = function(app) {
-
-	// api ---------------------------------------------------------------------
-	// get all todos
-	app.get('/api/todos', function(req, res) {
-
-		// use mongoose to get all todos in the database
-		Todo.find(function(err, todos) {
+function getTodos(res){
+	Todo.find(function(err, todos) {
 
 			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
 			if (err)
@@ -15,6 +9,16 @@ module.exports = function(app) {
 
 			res.json(todos); // return all todos in JSON format
 		});
+};
+
+module.exports = function(app) {
+
+	// api ---------------------------------------------------------------------
+	// get all todos
+	app.get('/api/todos', function(req, res) {
+
+		// use mongoose to get all todos in the database
+		getTodos(res);
 	});
 
 	// create todo and send back all todos after creation
@@ -29,11 +33,7 @@ module.exports = function(app) {
 				res.send(err);
 
 			// get and return all the todos after you create another
-			Todo.find(function(err, todos) {
-				if (err)
-					res.send(err)
-				res.json(todos);
-			});
+			getTodos(res);
 		});
 
 	});
@@ -46,12 +46,7 @@ module.exports = function(app) {
 			if (err)
 				res.send(err);
 
-			// get and return all the todos after you create another
-			Todo.find(function(err, todos) {
-				if (err)
-					res.send(err)
-				res.json(todos);
-			});
+			getTodos(res);
 		});
 	});
 

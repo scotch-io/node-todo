@@ -17,15 +17,7 @@ Node provides the RESTful API. Angular provides the frontend and accesses the AP
 
 ## Tutorial Series
 
-This repo corresponds to the Node Todo Tutorial Series on [scotch.io](http://scotch.io)
-
-Each branch represents a certain tutorial.
-- tut1-starter: [Creating a Single Page Todo App with Node and Angular](http://scotch.io/tutorials/javascript/creating-a-single-page-todo-app-with-node-and-angular)
-- tut2-services: Coming Soon
-- tut3-auth: Coming Soon
-- tut4-sockets: Coming Soon
-- tut5-redis: Coming Soon
-- tut6-organization: Coming Soon
+This repo corresponds to the [Node Todo Tutorial Series](http://scotch.io/series/node-and-angular-to-do-app) on [scotch.io](http://scotch.io)
 
 Happy Todo-ing!
 

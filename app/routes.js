@@ -46,7 +46,7 @@ module.exports = function(app) {
 			if (err)
 				res.send(err);
 
-			// get and return all the todos after you create another
+			// get and return all the todos after you deleted a todo
 			Todo.find(function(err, todos) {
 				if (err)
 					res.send(err)

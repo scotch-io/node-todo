@@ -6,8 +6,8 @@ function getTodos(res){
 			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
 			if (err)
 				res.send(err)
-
-			res.json(todos); // return all todos in JSON format
+			else
+				res.json(todos); // return all todos in JSON format
 		});
 };
 
@@ -31,9 +31,8 @@ module.exports = function(app) {
 		}, function(err, todo) {
 			if (err)
 				res.send(err);
-
-			// get and return all the todos after you create another
-			getTodos(res);
+			else
+				getTodos(res); // get and return all the todos after you create another
 		});
 
 	});
@@ -45,8 +44,8 @@ module.exports = function(app) {
 		}, function(err, todo) {
 			if (err)
 				res.send(err);
-
-			getTodos(res);
+			else
+				getTodos(res);
 		});
 	});
 

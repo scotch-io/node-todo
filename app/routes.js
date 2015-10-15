@@ -70,16 +70,12 @@ module.exports = function(app) {
 	});
     
 
-    app.get('/api/old', function(req, res) {
+    app.get('/api/completed', function(req, res) {
         //res.sendfile('./public/old.html');  
         getOldTodos(res);
     });
 
     
-	app.get('/old', function(req, res) {
-		res.sendfile('./public/old.html'); // load the view file (angular will handle the page changes on the front-end)
-	});
-
 	// application -------------------------------------------------------------
 	app.get('*', function(req, res) {
 		res.sendfile('./public/index.html'); // load the view file (angular will handle the page changes on the front-end)

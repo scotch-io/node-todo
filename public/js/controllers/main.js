@@ -14,6 +14,7 @@ angular.module('todoController', [])
 				$scope.loading = false;
 			});
 
+
 		// CREATE ==================================================================
 		// when submitting the add form, send the text to the node API
 		$scope.createTodo = function() {

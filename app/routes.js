@@ -1,7 +1,7 @@
 var Todo = require('./models/todo');
 
 function getTodos(res){
-	Todo.find(function(err, todos) {
+	Todo.find({done:false},function(err, todos) {
 
 			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
 			if (err)
@@ -10,6 +10,18 @@ function getTodos(res){
 			res.json(todos); // return all todos in JSON format
 		});
 };
+
+function getOldTodos(res){
+    Todo.find({done:true},function(err, todos) {
+
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+			if (err)
+				res.send(err)
+
+			res.json(todos); // return all todos in JSON format
+		});
+}
+
 
 module.exports = function(app) {
 
@@ -27,7 +39,8 @@ module.exports = function(app) {
 		// create a todo, information comes from AJAX request from Angular
 		Todo.create({
 			text : req.body.text,
-			done : false
+			done : false,
+            //timeCompleted: null
 		}, function(err, todo) {
 			if (err)
 				res.send(err);
@@ -38,20 +51,38 @@ module.exports = function(app) {
 
 	});
 
-	// delete a todo
+    
+	// Check off todo
 	app.delete('/api/todos/:todo_id', function(req, res) {
-		Todo.remove({
-			_id : req.params.todo_id
-		}, function(err, todo) {
-			if (err)
-				res.send(err);
 
-			getTodos(res);
-		});
+        Todo.findById(req.params.todo_id, function (err, todo) {
+            if (err)
+                res.send(err);
+            todo.done = true;
+            //todo.timeCompleted = Date.now();
+            todo.save(function (err) {
+                if (err)
+                    res.send(err);
+                getTodos(res);
+            });
+        });
+
+	});
+    
+
+    app.get('/api/old', function(req, res) {
+        //res.sendfile('./public/old.html');  
+        getOldTodos(res);
+    });
+
+    
+	app.get('/old', function(req, res) {
+		res.sendfile('./public/old.html'); // load the view file (angular will handle the page changes on the front-end)
 	});
 
 	// application -------------------------------------------------------------
 	app.get('*', function(req, res) {
-		res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+		res.sendfile('./public/index.html'); // load the view file (angular will handle the page changes on the front-end)
 	});
+
 };

@@ -14,6 +14,11 @@ angular.module('todoController', [])
 				$scope.loading = false;
 			});
 
+		Todos.version()
+			.success(function(data) {
+				$scope.versions = data;
+			});
+
 		// CREATE ==================================================================
 		// when submitting the add form, send the text to the node API
 		$scope.createTodo = function() {

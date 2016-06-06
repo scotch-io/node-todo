@@ -8,5 +8,7 @@ services:
 #  - docker build -t prydonius/node-todo .
 #  - docker push prydonius/node-todo
 
+install: true
+
 script:
   - docker run lachlanevenson/k8s-kubectl --insecure-skip-tls-verify --server "$KUBE_SERVER" --username "$KUBE_USERNAME" --password="$KUBE_PASSWORD" cluster-info

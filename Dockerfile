@@ -32,5 +32,5 @@ WORKDIR /app
 
 RUN npm install
 
-EXPOSE 3000
-CMD ["npm", "start"]
+EXPOSE 8080
+CMD ["node", "server.js"]

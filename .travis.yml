@@ -14,4 +14,4 @@ before_install:
 install: true
 
 script:
-  - /tmp/kubectl --insecure-skip-tls-verify --server "$KUBE_SERVER" --username "$KUBE_USERNAME" --password="$KUBE_PASSWORD" --namespace helm rolling-update node-todo --image prydonius/node-todo
+  - /tmp/kubectl --insecure-skip-tls-verify --server "$KUBE_SERVER" --username "$KUBE_USERNAME" --password="$KUBE_PASSWORD" --namespace helm rolling-update node-todo --image prydonius/node-todo:latest

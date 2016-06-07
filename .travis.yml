@@ -6,7 +6,7 @@ services:
   - docker
 
 before_install:
- - cd $HOME && curl -O https://storage.googleapis.com/kubernetes-release/release/v1.2.4/bin/linux/amd64/kubectl && chmod +x kubectl
+ - curl https://storage.googleapis.com/kubernetes-release/release/v1.2.4/bin/linux/amd64/kubectl > /tmp/kubectl && chmod +x /tmp/kubectl
  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
  - docker build -t prydonius/node-todo .
  - docker push prydonius/node-todo
@@ -15,4 +15,4 @@ install: true
 
 script:
   # - $HOME/kubectl --insecure-skip-tls-verify --server "$KUBE_SERVER" --username "$KUBE_USERNAME" --password="$KUBE_PASSWORD" --namespace helm rolling-update node-todo --image prydonius/node-todo
-  - $HOME/kubectl --insecure-skip-tls-verify --server "$KUBE_SERVER" --username "$KUBE_USERNAME" --password="$KUBE_PASSWORD" cluster-info
+  - /tmp/kubectl --insecure-skip-tls-verify --server "$KUBE_SERVER" --username "$KUBE_USERNAME" --password="$KUBE_PASSWORD" cluster-info

@@ -5,6 +5,10 @@ language: generic
 services:
   - docker
 
+branches:
+  only:
+    - master
+
 before_install:
  - curl https://storage.googleapis.com/kubernetes-release/release/v1.2.4/bin/linux/amd64/kubectl > /tmp/kubectl && chmod +x /tmp/kubectl
  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"

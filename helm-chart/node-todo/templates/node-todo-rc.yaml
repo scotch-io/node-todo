@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: node-todo
+  labels:
+    provider: node-todo
+spec:
+  replicas: 1
+  selector:
+    provider: node-todo
+  template:
+    metadata:
+      labels:
+        provider: node-todo
+    spec:
+      containers:
+      - name: node-todo
+        image: prydonius/node-todo:latest
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 8080

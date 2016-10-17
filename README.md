@@ -8,6 +8,8 @@ Node provides the RESTful API. Angular provides the frontend and accesses the AP
 
 - [Node and npm](http://nodejs.org)
 - MongoDB: Make sure you have your own local or remote MongoDB database URI configured in `config/database.js`
+- MongoDB folder if installed with Hebrew : Mongoldb path : /usr/local/Cellar/mongodb/3.2.10/bin
+- to Start MongoDB: mongod
 
 ## Installation
 

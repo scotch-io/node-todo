@@ -67,11 +67,11 @@
 								<div class="form-group">
 
 									<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-									<input type="text" class="form-control input-lg text-center" placeholder="Add a Task" ng-model="formData.text">
+									<input type="text" class="form-control input-lg text-center" placeholder="Add a Task" ng-model="quad1formData.text">
 								</div>
 
 								<!-- createToDo() WILL CREATE NEW TODOS -->
-								<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+								<button type="submit" id="quad1" class="btn btn-primary btn-lg" ng-click="createTodo($event)">Add</button>
 							</form>
 						</div>
 					</div>
@@ -109,11 +109,11 @@
 								<div class="form-group">
 
 									<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-									<input type="text" class="form-control input-lg text-center" placeholder="Add a Task" ng-model="formData.text">
+									<input type="text" class="form-control input-lg text-center" placeholder="Add a Task" ng-model="quad2formData.text">
 								</div>
 
 								<!-- createToDo() WILL CREATE NEW TODOS -->
-								<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+								<button type="submit" id="quad2" class="btn btn-primary btn-lg" ng-click="createTodo($event)">Add</button>
 							</form>
 						</div>
 					</div>

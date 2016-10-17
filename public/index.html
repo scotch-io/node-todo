@@ -38,21 +38,7 @@
 		<div class="row">
 			<div class="col-sm-6">
 
-				<!-- FORM TO CREATE TODOS -->
-					<div id="todo-form" class="row">
-						<div class="col-sm-10 col-sm-offset-2 text-center">
-							<form>
-								<div class="form-group">
-
-									<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-									<input type="text" class="form-control input-lg text-center" placeholder="Add a Task" ng-model="formData.text">
-								</div>
-
-								<!-- createToDo() WILL CREATE NEW TODOS -->
-								<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
-							</form>
-						</div>
-					</div>
+				
 
 
 					<!-- TODO LIST -->
@@ -74,12 +60,6 @@
 
 						</div>
 					</div>
-
-					
-				</div>
-				
-				<div class="col-sm-6">
-
 					<!-- FORM TO CREATE TODOS -->
 					<div id="todo-form" class="row">
 						<div class="col-sm-10 col-sm-offset-2 text-center">
@@ -96,6 +76,13 @@
 						</div>
 					</div>
 
+					
+				</div>
+				
+				<div class="col-sm-6">
+
+					
+
 					<!-- TODO LIST -->
 					<div id="todo-list" class="row">
 						<div class="col-sm-8 col-sm-offset-4">
@@ -113,6 +100,21 @@
 								<span class="fa fa-spinner fa-spin fa-3x"></span>
 							</p>
 
+						</div>
+					</div>
+					<!-- FORM TO CREATE TODOS -->
+					<div id="todo-form" class="row">
+						<div class="col-sm-10 col-sm-offset-2 text-center">
+							<form>
+								<div class="form-group">
+
+									<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+									<input type="text" class="form-control input-lg text-center" placeholder="Add a Task" ng-model="formData.text">
+								</div>
+
+								<!-- createToDo() WILL CREATE NEW TODOS -->
+								<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+							</form>
 						</div>
 					</div>
 

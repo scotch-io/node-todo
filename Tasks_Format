@@ -1,0 +1,4 @@
+A task is a unit of work. 
+Task can have several characterisitcs.
+Task can be of several types. Task can be dependent on another task. A task can have sub tasks.
+1) Defect Task: { defect id, ETA, isFrontend,  iserrorinlogs, replicable, subtask: {update QC, commited code, }}

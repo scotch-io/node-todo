@@ -1,0 +1,4 @@
+To get mongo terminal
+go to installation folder.
+if you installed with hebrew go to /usr/local/Cellar/mongodb/3.2.10/bin and type mongo
+test

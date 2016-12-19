@@ -15,6 +15,11 @@ function getTodos(res) {
 module.exports = function (app) {
 
     // api ---------------------------------------------------------------------
+    // get node server version
+    app.get('/api/version', function(req, res) {
+        res.json(process.versions);
+    });
+
     // get all todos
     app.get('/api/todos', function (req, res) {
         // use mongoose to get all todos in the database

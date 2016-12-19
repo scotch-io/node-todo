@@ -1,0 +1,4 @@
+name: node-todo
+description: A Helm Chart for Scotch.io's Node Todo App
+version: 0.1.0
+home: ""

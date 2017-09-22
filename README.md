@@ -17,6 +17,13 @@ Node provides the RESTful API. Angular provides the frontend and accesses the AP
 3. Start the server: `node server.js`
 4. View in browser at `http://localhost:8080`
 
+## Installation with Docker
+
+1. Clone the repository: `git clone git@github.com:scotch-io/node-todo`
+2. Install Docker: [The Docker Store](https://store.docker.com/search?type=edition&offering=community)
+3. Run docker compose: `docker-compose up --build`
+
+
 ## Tutorial Series
 
 This repo corresponds to the Node Todo Tutorial Series on [scotch.io](http://scotch.io)

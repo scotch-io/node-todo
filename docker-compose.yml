@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
   
@@ -17,5 +17,3 @@ services:
     ports: ["8080:8080"]
     depends_on:
       - mongo
-    environment:
-      - MONGO_URL=mongodb://mongo:27017/meanstacktutorials

@@ -23,6 +23,7 @@ Node provides the RESTful API. Angular provides the frontend and accesses the AP
 2. Install Docker: [The Docker Store](https://store.docker.com/search?type=edition&offering=community)
 3. Change mongoose connect line database.localUrl to database.localUrlForDocker on server.js file.
 4. Run docker compose: `docker-compose up --build`
+5. View in browser at `http://localhost:8080`
 
 
 ## Tutorial Series

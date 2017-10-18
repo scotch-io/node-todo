@@ -11,19 +11,17 @@ Node provides the RESTful API. Angular provides the frontend and accesses the AP
 
 ## Installation
 
-1. Clone the repository: `git clone git@github.com:scotch-io/node-todo`
+1. Clone the repository: `git clone https://github.com/emrahyumuk/node-todo.git`
 2. Install the application: `npm install`
-3. Place your own MongoDB URI in `config/database.js`
 3. Start the server: `node server.js`
-4. View in browser at `http://localhost:8080`
+4. View in browser at `http://localhost:8000`
 
 ## Installation with Docker
 
-1. Clone the repository: `git clone git@github.com:scotch-io/node-todo`
+1. Clone the repository: `git clone https://github.com/emrahyumuk/node-todo.git`
 2. Install Docker: [The Docker Store](https://store.docker.com/search?type=edition&offering=community)
-3. Change mongoose connect line database.localUrl to database.localUrlForDocker on server.js file.
-4. Run docker compose: `docker-compose up --build`
-5. View in browser at `http://localhost:8080`
+3. Run docker compose: `docker-compose up` or if you want to debug on VS Code, run docker compose : `docker-compose -f docker-compose-debug.yml up`
+4. View in browser at `http://localhost:8000`
 
 
 ## Tutorial Series

@@ -13,7 +13,7 @@ services:
     volumes: 
       - ./:/app
     working_dir: /app
-    command: sh -c 'npm install -g nodemon; npm install; npm run dev; nodemon --debug=5858'
+    command: sh -c 'npm install -g nodemon; npm install; export NODE_ENV=dev; npm run dev; nodemon --debug=5858'
     ports:
       - "8000:8000"
       - "5858:5858"

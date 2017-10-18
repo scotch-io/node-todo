@@ -1,5 +1,5 @@
 module.exports = {
     db: {
-        url: 'mongodb://localhost/meanstacktutorials'
+        url: 'mongodb://mongo:27017/meanstacktutorials'
     }
 };

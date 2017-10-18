@@ -11,9 +11,9 @@ services:
   node-todo:
     image: node:8.5.0
     volumes: 
-      - ./:/usr/src/app
-    working_dir: /usr/src/app
-    command: sh -c 'npm cache clean; npm install -g nodemon; npm install; npm start; nodemon --debug=5858'
+      - ./:/app
+    working_dir: /app
+    command: sh -c 'npm install -g nodemon; npm install; npm run dev; nodemon --debug=5858'
     ports:
       - "8000:8000"
       - "5858:5858"

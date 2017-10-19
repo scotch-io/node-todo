@@ -33,6 +33,7 @@ Each branch represents a certain tutorial.
 - tut2-organization: [Application Organization and Structure](https://scotch.io/tutorials/node-and-angular-to-do-app-application-organization-and-structure)
 - tut3-services: [Controllers and Services](https://scotch.io/tutorials/node-and-angular-to-do-app-controllers-and-services)
 
-Happy Todo-ing!
+Happy Todo-ing! 
 
 ![Todo-aholic](http://i.imgur.com/ikyqgrn.png)
+-

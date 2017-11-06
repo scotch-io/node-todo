@@ -9,7 +9,7 @@ services:
       - '27017:27017'
   
   node-todo:
-    image: node:8.5.0
+    image: node:9.0.0
     volumes: 
       - ./:/app
     working_dir: /app

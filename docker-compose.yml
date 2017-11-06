@@ -4,6 +4,8 @@ services:
   
   mongo:
     image: mongo:3.4.9
+    volumes: 
+      - ~/data:/data/db
     command: mongod --smallfiles
     ports:
       - '27017:27017'

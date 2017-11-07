@@ -10,15 +10,15 @@ node{
             }
 
             stage('test') {
-                nodejs(nodeJSInstallationName: 'nodejs') {
-                    sh 'npm install --only=dev'
-                    sh 'npm test'
-                }
+                // nodejs(nodeJSInstallationName: 'nodejs') {
+                //     sh 'npm install --only=dev'
+                //     sh 'npm test'
+                // }
             }
 
             stage('build') {
                 def imageName = "my-node-todo" + ":" + commit_id
-                customImage = docker.build(imageName, "-f .")
+                customImage = docker.build(imageName, ".")
             }
 
             // stage('docker build/push') {

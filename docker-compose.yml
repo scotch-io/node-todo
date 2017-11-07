@@ -4,6 +4,7 @@ services:
   
   mongo:
     image: mongo:3.4.9
+    container_name: mongo-container
     volumes: 
       - ~/data:/data/db
     command: mongod --smallfiles
@@ -13,8 +14,12 @@ services:
   node-todo:
     build:
       context: .
+    image: my-node-todo
+    container_name: my-node-todo-container
     volumes: 
-      - ./:/app
+      - .:/app
     ports: ["8000:8000"]
+    links:
+      - mongo
     depends_on:
       - mongo

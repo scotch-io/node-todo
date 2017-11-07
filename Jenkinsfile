@@ -1,12 +1,8 @@
-pipeline{
-        agent { dockerfile true }
+node{
+        def commit_id
+        def customImage
+        def customContainer
         
-        stages{
-
-            def commit_id
-            def customImage
-            def customContainer
-
             stage('preparation'){
                 steps{
                     checkout scm
@@ -38,5 +34,4 @@ pipeline{
                     sh "curl -i http://${hostIp(c)}:8000/"
                 }
             }
-        }
    }

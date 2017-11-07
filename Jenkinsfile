@@ -1,10 +1,11 @@
 pipeline{
         agent { dockerfile true }
-        def commit_id
-        def customImage
-        def customContainer
         
         stages{
+
+            def commit_id
+            def customImage
+            def customContainer
 
             stage('preparation'){
                 steps{

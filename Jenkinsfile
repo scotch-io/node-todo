@@ -1,7 +1,7 @@
 node{
         def commit_id
         def customImage
-        def customContainer
+        def imageName
         
             stage('preparation'){
                 checkout scm
@@ -17,7 +17,7 @@ node{
             }
 
             stage('build') {
-                def imageName = "my-node-todo" + ":" + commit_id
+                imageName = "my-node-todo" + ":" + commit_id
                 customImage = docker.build(imageName, ".")
             }
 

@@ -10,6 +10,8 @@ services:
     command: mongod --smallfiles
     ports:
       - '27017:27017'
+    networks:
+      - db
   
   node-todo:
     build:
@@ -23,3 +25,8 @@ services:
       - mongo
     depends_on:
       - mongo
+    networks:
+      - db
+
+networks:
+  db:

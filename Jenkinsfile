@@ -27,9 +27,9 @@ node{
             // }
 
             stage('deploy') {
-                sh "docker kill my-node-todo-container"
+                //sh "docker kill my-node-todo-container"
                 docker.image(imageName).withRun('-p 8000:8000 --link=mongo-container --network=nodetodo_db"') {c ->
-                    sh "curl -i http://${hostIp(c)}:8000/"
+                    //sh "curl -i http://${hostIp(c)}:8000/"
                 }
             }
    }

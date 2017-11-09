@@ -28,8 +28,8 @@ node{
 
             stage('deploy') {
                 sh "docker kill my-node-todo-container"
-                def scriptd = "docker run -d -p 8000:8000 --link=mongo-container --network=nodetodo_db " + imageName
-                sh scriptd
+                def dockerRunImage = "docker run -d -p 8000:8000 --link=mongo-container --network=nodetodo_db " + imageName
+                sh dockerRunImage
                 // docker.image(imageName).withRun('-p 8000:8000 --link=mongo-container --network=nodetodo_db"') {c ->
                 //     //sh "curl -i http://${hostIp(c)}:8000/"
                 // }

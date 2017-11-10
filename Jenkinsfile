@@ -27,7 +27,7 @@ node{
             // }
 
             stage('deploy') {
-                sh "docker network disconnect -f nodetodo_db my-node-todo-container"
+                sh "docker network disconnect -f nodetodo_db my-node-todo-container || echo 'endpoint my-node-todo-container not found'"
                 def removePreviousContainer = 'docker rm -f my-node-todo-container && echo "previous container removed" || echo "container does not exist"'
                 sh removePreviousContainer
                 def dockerRunImage = "docker run -d -p 8000:8000 --link=mongo-container --network=nodetodo_db " + imageName

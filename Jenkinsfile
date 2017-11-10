@@ -29,7 +29,7 @@ node{
             stage('deploy') {
                 def removePreviousContainer = 'docker rm -f my-node-todo-container && echo "previous container removed" || echo "container does not exist"'
                 sh removePreviousContainer
-                def dockerRunImage = "docker run -d -p 8000:8000 --link=mongo-container --network=nodetodo_db --name=my-node-todo-container" + imageName
+                def dockerRunImage = "docker run -d -p 8000:8000 --link=mongo-container --network=nodetodo_db --name=my-node-todo-container " + imageName
                 sh dockerRunImage
                 // docker.image(imageName).withRun('-p 8000:8000 --link=mongo-container --network=nodetodo_db"') {c ->
                 //     //sh "curl -i http://${hostIp(c)}:8000/"

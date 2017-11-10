@@ -27,7 +27,9 @@ node{
             // }
 
             stage('deploy') {
-                def removePreviousContainer = 'docker kill my-node-todo-container && echo "previous container removed" || echo "container does not exist"'
+                
+                sh "lsof -i:8000"
+                def removePreviousContainer = 'docker rm -f my-node-todo-container && echo "previous container removed" || echo "container does not exist"'
                 sh removePreviousContainer
                 def dockerRunImage = "docker run -d -p 8000:8000 --link=mongo-container --network=nodetodo_db " + imageName
                 sh dockerRunImage

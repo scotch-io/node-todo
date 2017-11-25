@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  
+  mongo:
+    image: mongo:3.4.9
+    command: mongod --smallfiles
+    ports:
+      - '27017:27017'
+  
+  node-todo:
+    image: node:9.0.0
+    volumes: 
+      - ./:/app
+    working_dir: /app
+    command: sh -c 'npm install -g nodemon; npm install; export NODE_ENV=dev; npm run dev; nodemon --debug=5858'
+    ports:
+      - "8000:8000"
+      - "5858:5858"
+    depends_on:
+      - mongo

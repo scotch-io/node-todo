@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  
+  mongo:
+    image: mongo:3.4.9
+    container_name: mongo-container
+    volumes: 
+      - ~/data:/data/db
+    command: mongod --smallfiles
+    ports:
+      - '27017:27017'
+    networks:
+      - db
+  
+  node-todo:
+    build:
+      context: .
+    image: my-node-todo
+    container_name: my-node-todo-container
+    volumes: 
+      - .:/app
+    ports: ["8000:8000"]
+    links:
+      - mongo
+    depends_on:
+      - mongo
+    networks:
+      - db
+
+networks:
+  db:

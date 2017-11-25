@@ -11,11 +11,18 @@ Node provides the RESTful API. Angular provides the frontend and accesses the AP
 
 ## Installation
 
-1. Clone the repository: `git clone git@github.com:scotch-io/node-todo`
+1. Clone the repository: `git clone https://github.com/emrahyumuk/node-todo.git`
 2. Install the application: `npm install`
-3. Place your own MongoDB URI in `config/database.js`
 3. Start the server: `node server.js`
-4. View in browser at `http://localhost:8080`
+4. View in browser at `http://localhost:8000`
+
+## Installation with Docker
+
+1. Clone the repository: `git clone https://github.com/emrahyumuk/node-todo.git`
+2. Install Docker: [The Docker Store](https://store.docker.com/search?type=edition&offering=community)
+3. Run docker compose: `docker-compose up` or if you want to debug on VS Code, run docker compose : `docker-compose -f docker-compose-debug.yml up`
+4. View in browser at `http://localhost:8000`
+
 
 ## Tutorial Series
 
@@ -26,6 +33,7 @@ Each branch represents a certain tutorial.
 - tut2-organization: [Application Organization and Structure](https://scotch.io/tutorials/node-and-angular-to-do-app-application-organization-and-structure)
 - tut3-services: [Controllers and Services](https://scotch.io/tutorials/node-and-angular-to-do-app-controllers-and-services)
 
-Happy Todo-ing!
+Happy Todo-ing! 
 
 ![Todo-aholic](http://i.imgur.com/ikyqgrn.png)
+-

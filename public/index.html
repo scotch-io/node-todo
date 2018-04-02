@@ -11,6 +11,7 @@
 
 	<!-- SCROLLS -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 	<style>
 		html 					{ overflow-y:scroll; }
 		body 					{ padding-top:50px; }
@@ -19,7 +20,7 @@
 	</style>
 
 	<!-- SPELLS -->
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script><!-- load angular 1.2.4 -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
 
 	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
 	<script src="js/services/todos.js"></script> <!-- load our todo service -->
@@ -39,12 +40,18 @@
 		<div id="todo-list" class="row">
 			<div class="col-sm-4 col-sm-offset-4">
 
+				
+
 				<!-- LOOP OVER THE TODOS IN $scope.todos -->
 				<div class="checkbox" ng-repeat="todo in todos">
 					<label>
 						<input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
 					</label>
 				</div>
+
+				<p class="text-center" ng-show="loading">
+					<span class="fa fa-spinner fa-spin fa-3x"></span>
+				</p>
 
 			</div>
 		</div>

@@ -4,3 +4,5 @@ Dockerfile
 .git
 README.md
 README_es.md
+mongodb
+mongodb/*

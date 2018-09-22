@@ -6,3 +6,5 @@ README.md
 README_es.md
 mongodb
 mongodb/*
+docker-compose.yml
+license

@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: todo-service
   labels:
-    name: node-todo-service
+    name: todo-service
     app: nodeapp
 spec:
   selector:
@@ -26,7 +26,7 @@ metadata:
     app: todoapp
 spec:
   containers:
-  - name: nodecontainer
+  - name: todo-container
     image: index.docker.io/uzzal2k5/node-todo:latest
     env:
     - name: MONGODB_HOST
@@ -60,7 +60,7 @@ metadata:
     app: database
 spec:
   containers:
-  - name: dbcontainer
+  - name: mongodb
     image: mongo:4.0.2
     ports:
     - containerPort: 27017

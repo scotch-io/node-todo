@@ -15,7 +15,7 @@ services:
   # node-todo App
   node-todo:
     build: .
-    container_name: node-todo
+    container_name: todo-container
     hostname: node-todo
     ports:
       - 80:8080/tcp

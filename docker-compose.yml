@@ -4,22 +4,24 @@ services:
     build: .
     container_name: node-todo
     hostname: node-todo
+    # environment:
+    #  - MONGO_URI="mongodb://nodeuser:nodepassword@mongodb:27017/admin"
     ports:
       - 8095:8080/tcp
-    links:
-      - mongodb
+    #links:
+    #  - mongodb
     depends_on:
       - mongodb
 
   mongodb:
     image: mongo:latest
     hostname: mongodb
-    container_name: dbserver
+    container_name: mongodb
     ports:
-      - 27017:27017
+      - "27017:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: "nodeuser"
       MONGO_INITDB_ROOT_PASSWORD: "nodepassword"
-    command: mongod --smallfiles --logpath=/dev/null
+
 
 

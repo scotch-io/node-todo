@@ -7,7 +7,7 @@ def GIT_REPOSITORY_NAME  = "https://github.com/uzzal2k5/node-todo.git"
 
 def IMAGE_NAME = "node-todo"
 def todoImages
-
+def version, revision
 
 
 # Version & Release Specified Here

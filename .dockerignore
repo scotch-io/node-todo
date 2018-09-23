@@ -8,3 +8,6 @@ mongodb
 mongodb/*
 docker-compose.yml
 license
+aws-k8s-replication.yml
+k8s-node-todo.yml
+Jenkinsfile

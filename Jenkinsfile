@@ -8,6 +8,7 @@ def GIT_REPOSITORY_NAME  = "https://github.com/uzzal2k5/node-todo.git"
 def IMAGE_NAME = "node-todo"
 def todoImages
 def version, revision
+def BRANCH = 'master'
 
 
 //Version & Release Specified Here
@@ -20,10 +21,10 @@ def getVersion(def projectJson){
 
 
 // REPOSITORY CLONE FROM GIT
-def CloneFromGit( REPOSITORY_NAME ){
+def CloneFromGit( REPOSITORY_NAME,BRANCH ){
     def version, revision
     try {
-        git(branch: "${params.BRANCH}",
+        git(branch: "${BRANCH}",
                 changelog: true,
                 credentialsId: 'github-credentials',
                 poll: true,
@@ -74,7 +75,7 @@ node {
 
 
      stage('GIT CLONE') {
-            CloneFromGit(GIT_REPOSITORY_NAME)
+            CloneFromGit(GIT_REPOSITORY_NAME, BRANCH)
 
       }
 

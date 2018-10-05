@@ -1,7 +1,7 @@
 #!groovy
 import groovy.json.JsonSlurperClassic
 def DOCKER_BUILD_SERVER = "tcp://10.10.10.98:2376"
-def DOCKER_IMAGE_REGISTRY = "index.docker.io/uzzal2k5/"
+def DOCKER_IMAGE_REPOSITORY = "uzzal2k5"
 def GIT_REPOSITORY_NAME  = "https://github.com/uzzal2k5/node-todo.git"
 
 
@@ -46,20 +46,20 @@ def CloneFromGit( REPOSITORY_NAME,BRANCH ){
 
 
 // DOCKER IMAGE BUILD & PUSH TO REGISTRY
-def DockerImageBuild( DOCKER_BUILD_SERVER, DOCKER_IMAGE_REGISTRY, IMAGE_NAME ){
+def DockerImageBuild( DOCKER_BUILD_SERVER, IMAGE_REPOSITORY, IMAGE_NAME ){
 
     // DOCKER IMAGE BUILD
     withDockerServer([uri: "${DOCKER_BUILD_SERVER}"]) {
         stage('IMAGE BUILD'){
 
-            todoImages = docker.build("${IMAGE_NAME}")
+            todoImages = docker.build("${IMAGE_REPOSITORY}/${IMAGE_NAME}")
 
 
         }
 
         //PUSH TO REGISTRY
         stage('PUSH IMAGE'){
-            withDockerRegistry(url: "${DOCKER_IMAGE_REGISTRY}") {
+            withDockerRegistry(credentialsId: 'dockerhub_credential', url: '') {
                 todoImages.push("${env.BUILD_NUMBER}")
                 todoImages.push("latest")
             }
@@ -79,7 +79,7 @@ node {
 
       }
 
-     DockerImageBuild(DOCKER_BUILD_SERVER,DOCKER_IMAGE_REGISTRY, IMAGE_NAME)
+     DockerImageBuild(DOCKER_BUILD_SERVER,DOCKER_IMAGE_REPOSITORY, IMAGE_NAME)
 
 
 //NODE END

@@ -52,7 +52,7 @@ def DockerImageBuild( DOCKER_BUILD_SERVER, DOCKER_IMAGE_REGISTRY, IMAGE_NAME ){
     withDockerServer([uri: "${DOCKER_BUILD_SERVER}"]) {
         stage('IMAGE BUILD'){
 
-            todoImages = docker.build("${DOCKER_IMAGE_REGISTRY}/${IMAGE_NAME}")
+            todoImages = docker.build("${IMAGE_NAME}")
 
 
         }
@@ -60,8 +60,8 @@ def DockerImageBuild( DOCKER_BUILD_SERVER, DOCKER_IMAGE_REGISTRY, IMAGE_NAME ){
         //PUSH TO REGISTRY
         stage('PUSH IMAGE'){
             withDockerRegistry(url: "${DOCKER_IMAGE_REGISTRY}") {
-                todoImages.push("${IMAGE_NAME}:${env.BUILD_NUMBER}")
-                todoImages.push("${IMAGE_NAME}:latest")
+                todoImages.push("${env.BUILD_NUMBER}")
+                todoImages.push("latest")
             }
 
         }

@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  todo-node:
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    container_name: todo-node
+    depends_on: 
+      - todo-mongo
+
+  todo-mongo:
+    image: mongo:latest
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: todo-app
+    container_name: todo-mongo
+

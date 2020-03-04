@@ -6,9 +6,9 @@
   "author": "Scotch",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "mongoose": "4.10.8",
     "express": "^4.10.8",
     "method-override": "^2.3.10",
+    "mongoose": "^5.9.3",
     "morgan": "^1.9.0"
   }
 }

@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: todo
+  template:
+    metadata:
+      labels:
+        app: todo
+    spec:
+      containers:
+        - name: todo
+          image: codebabel/todo
+          ports:
+            - containerPort: 8080
+          env:
+          - name: DB_CONN_STRING
+            valueFrom:
+              secretKeyRef:
+                name: db-conn-string
+                key: key
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo-service
+  labels:
+    name: todo-service
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: todo
+  type: LoadBalancer

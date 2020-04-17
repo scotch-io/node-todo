@@ -1,4 +1,5 @@
 var Todo = require('./models/todo');
+var packageJson = require('../package.json');
 
 function getTodos(res) {
     Todo.find(function (err, todos) {
@@ -48,6 +49,11 @@ module.exports = function (app) {
 
             getTodos(res);
         });
+    });
+
+    // get product version
+    app.get('/api/product-version', function (req, res) {
+        res.json({ version: packageJson.version });
     });
 
     // application -------------------------------------------------------------

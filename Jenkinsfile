@@ -1,6 +1,6 @@
 #!groovy
 import groovy.json.JsonSlurperClassic
-def DOCKER_BUILD_SERVER = "tcp://10.5.52.146:2376"
+def DOCKER_BUILD_SERVER = "unix:///var/run/docker.sock"
 def DOCKER_IMAGE_REPOSITORY = "uzzal2k5"
 def GIT_REPOSITORY_NAME  = "https://github.com/uzzal2k5/node-todo.git"
 

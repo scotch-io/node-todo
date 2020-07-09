@@ -1,0 +1,31 @@
+version: '2.0'
+services:
+  # mongoDB
+  mongodb:
+      image: mongo:4.0.2
+      hostname: mongodb
+      container_name: mongodb
+      #environment:
+      #  MONGO_INITDB_ROOT_USERNAME: "uzzal"
+      #  MONGO_INITDB_ROOT_PASSWORD: "password"
+      ports:
+        - "27017:27017"
+      restart: always
+
+  # node-todo App
+  node-todo:
+    build: .
+    container_name: todo-container
+    hostname: node-todo
+    ports:
+      - 80:8080/tcp
+    tty: true
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
+    restart: always
+
+
+
+

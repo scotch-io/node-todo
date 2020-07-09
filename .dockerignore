@@ -1,0 +1,13 @@
+Dockerfile
+.gitignore
+.dockerignore
+.git
+README.md
+README_es.md
+mongodb
+mongodb/*
+docker-compose.yml
+license
+aws-k8s-replication.yml
+k8s-node-todo.yml
+Jenkinsfile

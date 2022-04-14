@@ -6,7 +6,7 @@ angular.module('todoController', [])
 		$scope.loading = true;
 
 		// GET =====================================================================
-		// when landing on the page, get all todos and show them
+		// when landing on the page, get all todos and show them (test) (another test)
 		// use the service to get all the todos
 		Todos.get()
 			.success(function(data) {

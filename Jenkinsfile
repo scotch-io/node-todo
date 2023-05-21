@@ -70,9 +70,7 @@ def DockerImageBuild( DOCKER_BUILD_SERVER, IMAGE_REPOSITORY, IMAGE_NAME ){
     return this
 }
 def ScanWithSynk(){
-    tools {
-         snyk 'synk-latest'
-    }
+
     stage('Scan') {
          snykSecurity(
              organisation: 'uzzal2k5',
@@ -81,7 +79,6 @@ def ScanWithSynk(){
              snykInstallation: 'Snyk',
              snykTokenId: 'synk_api_token',
              targetFile: 'Dockerfile'
-             failOnIssues: 'false'
          )
 
     }
@@ -90,13 +87,15 @@ def ScanWithSynk(){
 // BUILD NODE
 node {
 
-
+    tools {
+        snyk 'synk-latest'
+    }
      stage('GIT CLONE') {
             CloneFromGit(GIT_REPOSITORY_NAME, BRANCH)
 
       }
-     ScanWithSynk()
-//      DockerImageBuild(DOCKER_BUILD_SERVER,DOCKER_IMAGE_REPOSITORY, IMAGE_NAME)
+      ScanWithSynk()
+      DockerImageBuild(DOCKER_BUILD_SERVER,DOCKER_IMAGE_REPOSITORY, IMAGE_NAME)
 
 
 //NODE END

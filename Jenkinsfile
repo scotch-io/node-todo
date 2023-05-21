@@ -26,7 +26,7 @@ def CloneFromGit( REPOSITORY_NAME,BRANCH ){
     try {
         git(branch: "${BRANCH}",
                 changelog: true,
-                credentialsId: 'github-credentials',
+                credentialsId: 'github_access_credentials',
                 poll: true,
                 url: "${REPOSITORY_NAME }"
         )
@@ -69,6 +69,23 @@ def DockerImageBuild( DOCKER_BUILD_SERVER, IMAGE_REPOSITORY, IMAGE_NAME ){
     }
     return this
 }
+def ScanWithSynk(){
+    tools {
+         snyk 'synk-latest'
+    }
+    stage('Scan') {
+         snykSecurity(
+             organisation: 'uzzal2k5',
+             projectName: 'nodejs_demo_snyk',
+             severity: 'medium',
+             snykInstallation: 'Snyk',
+             snykTokenId: 'synk_api_token',
+             targetFile: 'Dockerfile'
+             failOnIssues: 'false'
+         )
+
+    }
+}
 
 // BUILD NODE
 node {
@@ -78,8 +95,8 @@ node {
             CloneFromGit(GIT_REPOSITORY_NAME, BRANCH)
 
       }
-
-     DockerImageBuild(DOCKER_BUILD_SERVER,DOCKER_IMAGE_REPOSITORY, IMAGE_NAME)
+     ScanWithSynk()
+//      DockerImageBuild(DOCKER_BUILD_SERVER,DOCKER_IMAGE_REPOSITORY, IMAGE_NAME)
 
 
 //NODE END

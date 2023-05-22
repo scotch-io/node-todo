@@ -103,7 +103,7 @@ def CloneFromGit( REPOSITORY_NAME,BRANCH ){
 // }
 
 // BUILD NODE
-node {
+pipeline {
     agent any
     stages {
 

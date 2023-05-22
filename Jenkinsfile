@@ -46,13 +46,13 @@ def CloneFromGit( REPOSITORY_NAME,BRANCH ){
 
 
 // DOCKER IMAGE BUILD & PUSH TO REGISTRY
-def DockerImageBuild( DOCKER_BUILD_SERVER, IMAGE_REPOSITORY, IMAGE_NAME ){
-
-    // DOCKER IMAGE BUILD
-    withDockerServer([uri: "${DOCKER_BUILD_SERVER}"]) {
-        stage('IMAGE BUILD'){
-            todoImages = docker.build("${IMAGE_REPOSITORY}/${IMAGE_NAME}")
-        }
+// def DockerImageBuild( DOCKER_BUILD_SERVER, IMAGE_REPOSITORY, IMAGE_NAME ){
+//
+//     // DOCKER IMAGE BUILD
+//     withDockerServer([uri: "${DOCKER_BUILD_SERVER}"]) {
+//         stage('IMAGE BUILD'){
+//             todoImages = docker.build("${IMAGE_REPOSITORY}/${IMAGE_NAME}")
+//         }
 //         stage('SCAN'){
 //             steps{
 //             script{
@@ -75,19 +75,19 @@ def DockerImageBuild( DOCKER_BUILD_SERVER, IMAGE_REPOSITORY, IMAGE_NAME ){
 //                 }
 //             }
 //         }
-
-        //PUSH TO REGISTRY
-        stage('PUSH IMAGE'){
-            withDockerRegistry(credentialsId: 'dockerhub_credentials', url: '') {
-                todoImages.push("${env.BUILD_NUMBER}")
-                todoImages.push("latest")
-            }
-
-        }
-
-    }
-    return this
-}
+//
+//         //PUSH TO REGISTRY
+//         stage('PUSH IMAGE'){
+//             withDockerRegistry(credentialsId: 'dockerhub_credentials', url: '') {
+//                 todoImages.push("${env.BUILD_NUMBER}")
+//                 todoImages.push("latest")
+//             }
+//
+//         }
+//
+//     }
+//     return this
+// }
 // def ScanWithSynk(){
 //          snykSecurity(
 //              organisation: 'uzzal2k5',
@@ -105,12 +105,34 @@ def DockerImageBuild( DOCKER_BUILD_SERVER, IMAGE_REPOSITORY, IMAGE_NAME ){
 // BUILD NODE
 node {
     agent any
+    stages {
 
      stage('GIT CLONE') {
+            steps {
+                CloneFromGit(GIT_REPOSITORY_NAME, BRANCH)
+            }
+          }
 
-            CloneFromGit(GIT_REPOSITORY_NAME, BRANCH)
-      }
-      DockerImageBuild(DOCKER_BUILD_SERVER,DOCKER_IMAGE_REPOSITORY, IMAGE_NAME)
+          withDockerServer([uri: "${DOCKER_BUILD_SERVER}"]) {
+             stage('IMAGE BUILD'){
+                 steps {
+                 todoImages = docker.build("${IMAGE_REPOSITORY}/${IMAGE_NAME}")
+                 }
+             }
+             stage('PUSH IMAGE'){
+                steps {
+                    withDockerRegistry(credentialsId: 'dockerhub_credentials', url: '') {
+                      todoImages.push("${env.BUILD_NUMBER}")
+                      todoImages.push("latest")
+                    }
+                }
+              }
+          }
+    }
+    }
+
+//       DockerImageBuild(DOCKER_BUILD_SERVER,DOCKER_IMAGE_REPOSITORY, IMAGE_NAME)
+
 
 
 //NODE END

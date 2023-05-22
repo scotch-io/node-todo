@@ -51,10 +51,7 @@ def DockerImageBuild( DOCKER_BUILD_SERVER, IMAGE_REPOSITORY, IMAGE_NAME ){
     // DOCKER IMAGE BUILD
     withDockerServer([uri: "${DOCKER_BUILD_SERVER}"]) {
         stage('IMAGE BUILD'){
-            steps{
             todoImages = docker.build("${IMAGE_REPOSITORY}/${IMAGE_NAME}")
-            }
-
         }
 //         stage('SCAN'){
 //             steps{
@@ -81,11 +78,9 @@ def DockerImageBuild( DOCKER_BUILD_SERVER, IMAGE_REPOSITORY, IMAGE_NAME ){
 
         //PUSH TO REGISTRY
         stage('PUSH IMAGE'){
-            steps{
             withDockerRegistry(credentialsId: 'dockerhub_credentials', url: '') {
                 todoImages.push("${env.BUILD_NUMBER}")
                 todoImages.push("latest")
-            }
             }
 
         }
@@ -111,17 +106,12 @@ def DockerImageBuild( DOCKER_BUILD_SERVER, IMAGE_REPOSITORY, IMAGE_NAME ){
 node {
     agent any
 
-    tools {
-        snyk 'snyk-latest'
-    }
-    stages {
      stage('GIT CLONE') {
 
             CloneFromGit(GIT_REPOSITORY_NAME, BRANCH)
       }
       DockerImageBuild(DOCKER_BUILD_SERVER,DOCKER_IMAGE_REPOSITORY, IMAGE_NAME)
 
-    }
 
 //NODE END
 }

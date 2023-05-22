@@ -49,28 +49,7 @@ def CloneFromGit( REPOSITORY_NAME,BRANCH ){
 //         stage('IMAGE BUILD'){
 //             todoImages = docker.build("${IMAGE_REPOSITORY}/${IMAGE_NAME}")
 //         }
-//         stage('SCAN'){
-//             steps{
-//             script{
-//                 snykSecurity(
-//                              organisation: 'uzzal2k5',
-//                              projectName: 'uzzal2k5/node-todo',
-//                              severity: 'medium',
-//                              snykInstallation: 'snyk-latest',
-//                              snykTokenId: 'synk_api_token',
-//                              failOnIssues: false
-//                          )
-//                 def variable = sh(
-//                             script: 'snyk container test uzzal2k5/node-todo:latest --severity-threshold=medium',
-//                             returnStatus: true
-//                          )
-//                          echo "Error Code = ${variable}"
-//                          if (variable !=0){
-//                             echo "Alert for Vulnerability Found"
-//                          }
-//                 }
-//             }
-//         }
+
 //
 //         //PUSH TO REGISTRY
 //         stage('PUSH IMAGE'){
@@ -121,6 +100,28 @@ environment {
                  }
              }
           }
+          stage('SCAN'){
+              steps{
+                  script{
+                          snykSecurity(
+                                       organisation: 'uzzal2k5',
+                                       projectName: 'uzzal2k5/node-todo',
+                                       severity: 'medium',
+                                       snykInstallation: 'snyk-latest',
+                                       snykTokenId: 'synk_api_token',
+                                       failOnIssues: false
+                                   )
+                        def variable = sh(
+                                      script: 'snyk container test uzzal2k5/node-todo:latest --severity-threshold=medium',
+                                      returnStatus: true
+                                   )
+                                   echo "Error Code = ${variable}"
+                                   if (variable !=0){
+                                      echo "Alert for Vulnerability Found"
+                                   }
+                          }
+                        }
+                  }
 
 
     }

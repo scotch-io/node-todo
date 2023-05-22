@@ -26,7 +26,7 @@ def CloneFromGit( REPOSITORY_NAME,BRANCH ){
     try {
         git(branch: "${BRANCH}",
                 changelog: true,
-                credentialsId: 'github_access_credentials',
+                credentialsId: 'github_credentials',
                 poll: true,
                 url: "${REPOSITORY_NAME }"
         )
@@ -51,17 +51,41 @@ def DockerImageBuild( DOCKER_BUILD_SERVER, IMAGE_REPOSITORY, IMAGE_NAME ){
     // DOCKER IMAGE BUILD
     withDockerServer([uri: "${DOCKER_BUILD_SERVER}"]) {
         stage('IMAGE BUILD'){
-
+            steps{
             todoImages = docker.build("${IMAGE_REPOSITORY}/${IMAGE_NAME}")
-
+            }
 
         }
+//         stage('SCAN'){
+//             steps{
+//             script{
+//                 snykSecurity(
+//                              organisation: 'uzzal2k5',
+//                              projectName: 'uzzal2k5/node-todo',
+//                              severity: 'medium',
+//                              snykInstallation: 'snyk-latest',
+//                              snykTokenId: 'synk_api_token',
+//                              failOnIssues: false
+//                          )
+//                 def variable = sh(
+//                             script: 'snyk container test uzzal2k5/node-todo:latest --severity-threshold=medium',
+//                             returnStatus: true
+//                          )
+//                          echo "Error Code = ${variable}"
+//                          if (variable !=0){
+//                             echo "Alert for Vulnerability Found"
+//                          }
+//                 }
+//             }
+//         }
 
         //PUSH TO REGISTRY
         stage('PUSH IMAGE'){
-            withDockerRegistry(credentialsId: 'dockerhub_credential', url: '') {
+            steps{
+            withDockerRegistry(credentialsId: 'dockerhub_credentials', url: '') {
                 todoImages.push("${env.BUILD_NUMBER}")
                 todoImages.push("latest")
+            }
             }
 
         }
@@ -69,34 +93,35 @@ def DockerImageBuild( DOCKER_BUILD_SERVER, IMAGE_REPOSITORY, IMAGE_NAME ){
     }
     return this
 }
-def ScanWithSynk(){
-
-    stage('Scan') {
-         snykSecurity(
-             organisation: 'uzzal2k5',
-             projectName: 'nodejs_demo_snyk',
-             severity: 'medium',
-             snykInstallation: 'Snyk',
-             snykTokenId: 'synk_api_token',
-             targetFile: 'Dockerfile'
-         )
-
-    }
-}
+// def ScanWithSynk(){
+//          snykSecurity(
+//              organisation: 'uzzal2k5',
+//              projectName: 'uzzal2k5/node-todo',
+//              severity: 'medium',
+//              snykInstallation: 'snyk-latest',
+//              snykTokenId: 'synk_api_token',
+//              targetFile: '/Users/uzzal/.jenkins/workspace/synk-project/Dockerfile',
+//              failOnIssues: false
+//          )
+//
+//          return this
+// }
 
 // BUILD NODE
 node {
+    agent any
 
     tools {
-        snyk 'synk-latest'
+        snyk 'snyk-latest'
     }
+    stages {
      stage('GIT CLONE') {
-            CloneFromGit(GIT_REPOSITORY_NAME, BRANCH)
 
+            CloneFromGit(GIT_REPOSITORY_NAME, BRANCH)
       }
-      ScanWithSynk()
       DockerImageBuild(DOCKER_BUILD_SERVER,DOCKER_IMAGE_REPOSITORY, IMAGE_NAME)
 
+    }
 
 //NODE END
 }

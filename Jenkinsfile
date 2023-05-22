@@ -3,10 +3,6 @@ import groovy.json.JsonSlurperClassic
 def DOCKER_BUILD_SERVER = "unix:///var/run/docker.sock"
 def DOCKER_IMAGE_REPOSITORY = "uzzal2k5"
 def GIT_REPOSITORY_NAME  = "https://github.com/uzzal2k5/node-todo.git"
-
-
-def IMAGE_NAME = "node-todo"
-def todoImages
 def version, revision
 def BRANCH = 'master'
 
@@ -104,31 +100,29 @@ def CloneFromGit( REPOSITORY_NAME,BRANCH ){
 
 // BUILD NODE
 pipeline {
+environment {
+    IMAGE_NAME = "node-todo"
+   todoImages = ''
+   IMAGE_REPOSITORY = "uzzal2k5"
+  }
+
     agent any
     stages {
 
-     stage('GIT CLONE') {
+          stage('GIT CLONE') {
             steps {
                 CloneFromGit(GIT_REPOSITORY_NAME, BRANCH)
             }
           }
-
-          withDockerServer([uri: "${DOCKER_BUILD_SERVER}"]) {
-             stage('IMAGE BUILD'){
-                 steps {
+          stage('IMAGE BUILD'){
+             steps {
+               script {
                  todoImages = docker.build("${IMAGE_REPOSITORY}/${IMAGE_NAME}")
                  }
              }
-             stage('PUSH IMAGE'){
-                steps {
-                    withDockerRegistry(credentialsId: 'dockerhub_credentials', url: '') {
-                      todoImages.push("${env.BUILD_NUMBER}")
-                      todoImages.push("latest")
-                    }
-                }
-              }
           }
-    }
+
+
     }
 
 //       DockerImageBuild(DOCKER_BUILD_SERVER,DOCKER_IMAGE_REPOSITORY, IMAGE_NAME)

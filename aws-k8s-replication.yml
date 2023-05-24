@@ -1,0 +1,76 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo-service
+  labels:
+    name: todo-service
+    app: nodeapp
+spec:
+  selector:
+    name: node-todo
+    app: todoapp
+  ports:
+  - port: 80
+    name: node-port
+    targetPort: 8080
+    protocol: TCP
+  type: LoadBalancer
+
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: todo-replicas
+  labels:
+    name: node-todo
+    app: todoapp
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: todo-pod
+      labels:
+        name: node-todo
+        app: todoapp
+    spec:
+      containers:
+      - name: todo-container
+        image: index.docker.io/uzzal2k5/node-todo:latest
+        env:
+        - name: MONGODB_HOST
+          value: mongodb
+        ports:
+        - containerPort: 8080
+        #imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb
+  labels:
+    name: mongodb
+    app: database
+spec:
+  selector:
+    name: mongodb
+    app: database
+  ports:
+  - port: 27017
+    name: db-port
+    targetPort: 27017
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mongodb
+  labels:
+    name: mongodb
+    app: database
+spec:
+  containers:
+  - name: mongodb
+    image: mongo:4.0.2
+    ports:
+    - containerPort: 27017
